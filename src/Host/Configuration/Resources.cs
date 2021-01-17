@@ -2,9 +2,9 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using System.Collections.Generic;
 using IdentityModel;
 using IdentityServer4.Models;
-using System.Collections.Generic;
 
 namespace Host.Configuration
 {
@@ -15,12 +15,10 @@ namespace Host.Configuration
             return new[]
             {
                 // some standard scopes from the OIDC spec
-                new IdentityResources.OpenId(),
-                new IdentityResources.Profile(),
-                new IdentityResources.Email(),
+                new IdentityResources.OpenId(), new IdentityResources.Profile(), new IdentityResources.Email(),
 
                 // custom identity resource with some consolidated claims
-                new IdentityResource("custom.profile", new[] { JwtClaimTypes.Name, JwtClaimTypes.Email, "location" })
+                new IdentityResource("custom.profile", new[] {JwtClaimTypes.Name, JwtClaimTypes.Email, "location"})
             };
         }
 
@@ -32,30 +30,16 @@ namespace Host.Configuration
                 new ApiResource("api1", "Some API 1")
                 {
                     // this is needed for introspection when using reference tokens
-                    ApiSecrets = { new Secret("secret".Sha256()) }
+                    ApiSecrets = {new Secret("secret".Sha256())}
                 },
-                
+
                 // expanded version if more control is needed
                 new ApiResource
                 {
                     Name = "api2",
-
-                    ApiSecrets =
-                    {
-                        new Secret("secret".Sha256())
-                    },
-
-                    UserClaims =
-                    {
-                        JwtClaimTypes.Name,
-                        JwtClaimTypes.Email
-                    },
-
-                    Scopes =
-                    {
-                        "api2.full_access",
-                        "api2.read_only"
-                    }
+                    ApiSecrets = {new Secret("secret".Sha256())},
+                    UserClaims = {JwtClaimTypes.Name, JwtClaimTypes.Email},
+                    Scopes = {"api2.full_access", "api2.read_only"}
                 }
             };
         }
@@ -64,16 +48,9 @@ namespace Host.Configuration
         {
             return new[]
             {
-                new ApiScope()
-                {
-                    Name = "api2.full_access",
-                    DisplayName = "Full access to API 2",
-                },
-                new ApiScope
-                {
-                    Name = "api2.read_only",
-                    DisplayName = "Read only access to API 2"
-                }
+                new ApiScope {Name = "api2.full_access", DisplayName = "Full access to API 2"},
+                new ApiScope {Name = "api2.read_only", DisplayName = "Read only access to API 2"},
+                new ApiScope {Name = "api1", DisplayName = "My API"}
             };
         }
     }

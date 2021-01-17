@@ -16,7 +16,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4.MongoDB", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CFAC3A63-E145-473E-9AA0-99EA17EC757D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer4.Tests.MongoDB", "test\IdentityServer4.Tests.MongoDB\IdentityServer4.Tests.MongoDB.csproj", "{277D3533-13CC-462E-9BA0-74BAF2658D07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer4.Tests.MongoDB", "test\IdentityServer4.Tests.MongoDB\IdentityServer4.Tests.MongoDB.csproj", "{277D3533-13CC-462E-9BA0-74BAF2658D07}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "test\Client\Client.csproj", "{E939D3AF-034F-4B6F-8E24-7564D727BDDD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "test\Api\Api.csproj", "{64854B53-CE4A-4E8C-A813-689C41046A6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,14 @@ Global
 		{277D3533-13CC-462E-9BA0-74BAF2658D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{277D3533-13CC-462E-9BA0-74BAF2658D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{277D3533-13CC-462E-9BA0-74BAF2658D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E939D3AF-034F-4B6F-8E24-7564D727BDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E939D3AF-034F-4B6F-8E24-7564D727BDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E939D3AF-034F-4B6F-8E24-7564D727BDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E939D3AF-034F-4B6F-8E24-7564D727BDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64854B53-CE4A-4E8C-A813-689C41046A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64854B53-CE4A-4E8C-A813-689C41046A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64854B53-CE4A-4E8C-A813-689C41046A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64854B53-CE4A-4E8C-A813-689C41046A6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +56,10 @@ Global
 		{00F607AE-4853-42A1-B536-F3B7759E1987} = {1E3859B1-7876-4B22-B7B6-1049D0344E52}
 		{A3A275B3-6017-4C98-B1E3-451EE07EF4F4} = {1E3859B1-7876-4B22-B7B6-1049D0344E52}
 		{277D3533-13CC-462E-9BA0-74BAF2658D07} = {CFAC3A63-E145-473E-9AA0-99EA17EC757D}
+		{E939D3AF-034F-4B6F-8E24-7564D727BDDD} = {CFAC3A63-E145-473E-9AA0-99EA17EC757D}
+		{64854B53-CE4A-4E8C-A813-689C41046A6D} = {CFAC3A63-E145-473E-9AA0-99EA17EC757D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81A3DA68-2FD0-42AF-977A-5E3B07AEE599}
 	EndGlobalSection
 EndGlobal

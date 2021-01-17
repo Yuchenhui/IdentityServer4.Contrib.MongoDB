@@ -1,25 +1,24 @@
-﻿using IdentityServer4.MongoDB.Options;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using IdentityServer4.MongoDB.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace IdentityServer4.MongoDB
 {
     /// <summary>
-    /// Helper to cleanup expired persisted grants.
+    ///     Helper to cleanup expired persisted grants.
     /// </summary>
     public class TokenCleanupService : BackgroundService
     {
-        private readonly IServiceProvider _serviceProvider;
-        private readonly TokenCleanupOptions _options;
         private readonly ILogger<TokenCleanupService> _logger;
+        private readonly TokenCleanupOptions _options;
+        private readonly IServiceProvider _serviceProvider;
 
-        public TokenCleanupService(IServiceProvider serviceProvider, TokenCleanupOptions options, ILogger<TokenCleanupService> logger)
+        public TokenCleanupService(IServiceProvider serviceProvider, TokenCleanupOptions options,
+            ILogger<TokenCleanupService> logger)
         {
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
             _options = options ?? throw new ArgumentNullException(nameof(options));
@@ -67,11 +66,10 @@ namespace IdentityServer4.MongoDB
 
         private async Task RemoveExpiredGrantsAsync()
         {
-            using (var serviceScope = _serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                var tokenCleanup = serviceScope.ServiceProvider.GetRequiredService<TokenCleanup>();
-                await tokenCleanup.RemoveExpiredGrantsAsync();
-            }
+            using IServiceScope serviceScope =
+                _serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
+            TokenCleanup tokenCleanup = serviceScope.ServiceProvider.GetRequiredService<TokenCleanup>();
+            await tokenCleanup.RemoveExpiredGrantsAsync();
         }
     }
 }
