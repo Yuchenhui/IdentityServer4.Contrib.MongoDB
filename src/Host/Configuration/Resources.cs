@@ -30,7 +30,7 @@ namespace Host.Configuration
                 new ApiResource("api1", "Some API 1")
                 {
                     // this is needed for introspection when using reference tokens
-                    ApiSecrets = {new Secret("secret".Sha256())}
+                    ApiSecrets = {new Secret("secret".Sha256())}, Scopes = {"api1"}
                 },
 
                 // expanded version if more control is needed
